@@ -16,23 +16,28 @@ void display();
 
 class Human {
 public:
-	static int humanCount; ///if i have 10 objects of this class all will share the same copy of humanCount because only one copy will be created. Also these cannot be initialized in the class
-						   // we have to intialize them somewhere outside the class before we start creating its objects
+	static int humanCount; ///if i have 10 objects of this class all will share the same copy of humanCount because only one copy will be created
 
 	Human() {
 		humanCount++;
 		cout << "human count = " << humanCount << endl;
 	}
+
+	static void HumanStaticMethod() {
+		//static member methods can only use static member variables. 
+		cout << humanCount << "       Printint this " << endl;
+	}
 };
 
 
-int Human::humanCount = 0; // this is how you initialzie the static variable. Dont know if there is any other way yet. 
+int Human::humanCount = 0;
 
 int main()
 {
 	cout << Human::humanCount;
 	Human anil;
 	Human bhavesh;
+	bhavesh.Human
 
 	return 0;
 }
