@@ -1,5 +1,3 @@
-// Reviewing.cpp : Defines the entry point for the console application.
-//CONST!!!!
 
 /*
 Comiler silently writes 4 functions if they are not explicitly declared:
@@ -19,7 +17,7 @@ using namespace std;
 class collar {
 public:
 
-	collar(string name ="asdAS" ) { // if you just had (string name) it wouldnt work. Default constructor are theones that do not need input parameters
+	collar(string name ="asdAS" ) { // if you just had (string name) you would get a compiler error. Default constructor are the ones that do not need input parameters.
 		std::cout << "Collar is born.\n";
 	}
 };
