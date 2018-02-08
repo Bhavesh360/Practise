@@ -1,7 +1,7 @@
 // Reviewing.cpp : Defines the entry point for the console application.
 
 /*
-Use virtual destructors in polumorphic base classes
+Just a factory class. Think about how the Dog will be detroyed if you copy a yellow dog pointer to a dog pointer??
 */
 
 #include "stdafx.h"
