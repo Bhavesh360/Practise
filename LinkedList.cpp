@@ -52,6 +52,35 @@ public:
 		temp->next= temp2->next;
 		temp2->next = temp;
 	}
+	void Reverse() {
+		Node* curr;
+		Node* next;
+		Node* prev = NULL;
+		curr = head;
+		while(curr != NULL) {
+			next = curr->next;
+			curr->next = prev;
+			prev = curr;
+			curr = next;
+		}
+		head = prev;
+	}
+
+	void Delete(int n) {
+		Node* temp = head;
+		if (n == 0) {
+			head = temp->next;
+			delete(temp);
+
+			return;
+		}
+		for (int i = 0; i < n - 1; i++) {
+			temp = temp->next;
+		}
+		Node* temp2 = temp->next;
+		temp->next = temp2->next;
+		delete temp2;
+	}
 
 	void print() {
 		Node* temp;
