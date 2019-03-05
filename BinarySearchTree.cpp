@@ -36,6 +36,33 @@ void Insert(BSTNode* &root, int data )     //think about how you could do it wit
 	}
 	
 }
+void BSTInsertwithoutRecursion(BSTNode* &root, int data) {
+	if (root == NULL) {
+		root = createNewNode(data);
+		return;
+	}
+	BSTNode* curr = root;
+	BSTNode* parent = NULL;
+
+	while (curr != NULL) {
+
+		parent = curr;
+
+		if (data <= curr->data) {
+			curr = curr->left;
+		}
+		else {
+			curr = curr->right;
+		}
+	}
+
+	if (data <= parent->data) {
+		parent->left = createNewNode(data);
+	}
+	else {
+		parent->right = createNewNode(data);
+	}
+}
 
 void breadthFirstSearchPrint(BSTNode* &root) {		//also called level Order Traversal
 	//cover the corner case first
