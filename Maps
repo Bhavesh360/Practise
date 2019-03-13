@@ -1,0 +1,55 @@
+//how to use C++ Maps.iterating and some function operations on maps. 
+
+#include "stdafx.h"
+
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+	//begin() – Returns an iterator to the first element in the map
+	//end() – Returns an iterator to the theoretical element that follows last element in the map
+	//size() – Returns the number of elements in the map
+	//max_size() – Returns the maximum number of elements that the map can hold
+	//empty() – Returns whether the map is empty
+	//pair insert(keyvalue, mapvalue) – Adds a new element to the map
+	//erase(iterator position) – Removes the element at the position pointed by the iterator
+	//erase(const g)– Removes the key value ‘g’ from the map
+	//clear() – Removes all the elements from the map
+
+	map<int, int> map1; 
+
+	map1.insert(pair<int, int>(1, 10));
+	map1.insert(pair<int, int>(3, 40));
+	map1.insert(pair<int, int>(2, 90));
+	map1.insert(pair<int, int>(6, 90));
+	map1.insert(pair<int, int>(4, 90));
+	map1.insert(pair<int, int>(1, 90));
+	
+	cout << "finding the 1st key's value :" << endl;
+	cout << map1.find(1)->second<< endl;
+	
+	cout << "printing all the elements in the map" << endl;
+	map<int, int>::iterator it;
+	for (it = map1.begin(); it != map1.end(); it++) 
+	{
+		cout << it->first << "  " << it->second << endl;
+	}
+	
+	map1.erase(1);
+	cout << "after erasing 1st key val pair" << endl;
+	for (it = map1.begin(); it != map1.end(); it++)
+	{
+		cout << it->first << "  " << it->second << endl;
+	}
+
+	map1.erase(map1.begin(), map1.find(4));
+	cout << "after erasing a range from the first element to key = 4 val pair" << endl;
+	for (it = map1.begin(); it != map1.end(); it++)
+	{
+		cout << it->first << "  " << it->second << endl;
+	}
+	getchar();
+}
