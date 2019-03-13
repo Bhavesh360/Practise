@@ -1,0 +1,118 @@
+// Bhavesh Gupta: Shuffle a deck a of cards
+//
+
+#include "stdafx.h"
+#include "virtualdestructor.h"
+#include <string>
+#include <array>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+
+class Card
+{
+private: 
+	string face;
+	string suit;
+public: 
+	Card(string cardface, string cardsuit) {
+		cout << "card created two" << endl;
+		face = cardface;
+		suit = cardsuit;
+	}
+	Card() {
+		cout << "card created" << endl;
+	};
+	~Card() {
+		cout << "card deleted" << endl;
+	}
+
+	void Card::print() {
+		cout << face + " of " + suit;
+	}
+};
+
+class Deck {
+	Card* deck = NULL;
+public:
+	Deck() 
+	{
+		if (deck != NULL) {
+			delete[] deck;
+		}
+		cout << "deck created";
+		deck = new Card[52];
+		string faces[] = { "1", "2","3","4","5","6","7","8","9","10", "11", "12","13" };
+		string suits[] = { "diamond", "spades", "hearts", "clubs" };
+		for (int i = 0; i < 52; i++) {
+			deck[i] = Card(faces[i % 13], suits[i / 13]);
+		}
+	}
+
+	~Deck() {
+		cout << "deck deleted";
+	}
+
+	void Deck::print() {
+		for(int i= 0 ; i < 52 ; i ++)
+		{
+			deck[i].print(); 
+			cout << " ";
+			if ((i + 1 )% 4 == 0) {
+				cout << endl;
+			}
+		}
+	}
+
+	void Deck::shuffle() {
+		for (int i = 0; i < 52-1; i++) 
+		{
+			int r = i + rand() % (52 - i) ;
+			Card temp = deck[r];
+			deck[r] = deck[i];
+			deck[i] = temp;
+		}
+	}
+};
+
+
+
+struct Vertices 
+{
+	float x, y, z;
+};
+
+void printVertices(vector<Vertices>& vertices)
+{
+	for (int i = 0; i < vertices.size(); i++) {
+		cout << vertices[i].x << " , " << vertices[i].y << "," << vertices[i].z << endl;
+	}
+}
+
+int main()
+{
+	vector<Vertices> vertices;
+	vertices.push_back({ 1 , 2 , 3 });
+	vertices.push_back({ 4, 5, 6 });
+
+	for (int i = 0; i < vertices.size(); i++) {
+		cout << vertices[i].x << " , " << vertices[i].y << "," << vertices[i].z << endl;
+	}
+
+	printVertices(vertices);
+	
+	cout << "************************" << endl;
+	Deck* deck = new Deck();
+	deck->print();
+	deck->shuffle();
+	deck->print();
+
+	getchar();
+	srand(time(NULL));
+	cout << endl << endl << rand() % (10 - 5)+1 << endl;
+
+}
